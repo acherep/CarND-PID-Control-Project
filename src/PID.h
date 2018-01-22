@@ -2,44 +2,50 @@
 #define PID_H
 
 class PID {
-public:
+ public:
   /*
-  * Errors
-  */
+   * Errors
+   */
   double p_error;
   double i_error;
   double d_error;
 
   /*
-  * Coefficients
-  */ 
+   * Coefficients
+   */
   double Kp;
   double Ki;
   double Kd;
+  double cte;
 
   /*
-  * Constructor
-  */
+   * Constructor
+   */
   PID();
 
   /*
-  * Destructor.
-  */
+   * Destructor.
+   */
   virtual ~PID();
 
   /*
-  * Initialize PID.
-  */
-  void Init(double Kp, double Ki, double Kd);
+   * Initialize PID.
+   */
+  void Init(double Kp, double Ki, double Kd, double cte);
 
   /*
-  * Update the PID error variables given cross track error.
-  */
+   * Calculates Steering.
+   */
+  double getSteering(double cte);
+
+  /*
+   * Update the PID error variables given cross track error.
+   */
   void UpdateError(double cte);
 
   /*
-  * Calculate the total PID error.
-  */
+   * Calculate the total PID error.
+   */
   double TotalError();
 };
 
