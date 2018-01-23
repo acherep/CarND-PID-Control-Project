@@ -1,5 +1,9 @@
 #include "PID.h"
 
+// https://discussions.udacity.com/t/twiddle-application-in-pid-controller/243427/27
+// https://discussions.udacity.com/t/how-to-tune-parameters/303845/7
+// https://discussions.udacity.com/t/how-to-tune-parameters/303845/14
+
 using namespace std;
 
 /*
