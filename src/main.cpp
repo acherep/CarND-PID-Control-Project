@@ -58,7 +58,7 @@ int main() {
               double angle = std::stod(j[1]["steering_angle"].get<std::string>());
 //              double steer_value = -0.05;
               double steer_value = pid.getSteering(cte);
-              double throttle = 0.5;
+              double throttle = 0.3;
               /*
                * TODO: Calcuate steering value here, remember the steering value is
                * [-1, 1].
