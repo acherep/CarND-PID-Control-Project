@@ -1,6 +1,8 @@
 #ifndef PID_H
 #define PID_H
 
+#include <uWS/uWS.h>
+
 class PID {
  public:
   /*
@@ -17,6 +19,10 @@ class PID {
   double Ki;
   double Kd;
   double cte;
+  double sum_cte;
+  int time_step;
+  double previous_error;
+  double total_error;
 
   /*
    * Constructor
@@ -38,15 +44,25 @@ class PID {
    */
   double getSteering(double cte);
 
+  void UpdateCoefficient();
+
   /*
    * Update the PID error variables given cross track error.
    */
   void UpdateError(double cte);
 
+  double GetTotalError();
+
   /*
    * Calculate the total PID error.
    */
   double TotalError();
+
+  void ResetTotalError();
+  /*
+   * Restart the simulator
+   */
+  void Restart(uWS::WebSocket<uWS::SERVER> ws);
 };
 
 #endif /* PID_H */
