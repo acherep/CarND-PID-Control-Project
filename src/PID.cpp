@@ -19,7 +19,7 @@ PID::~PID() {
 }
 
 void PID::Init(double Kp, double Ki, double Kd, double cte) {
-  this->Kp = Kp;
+  this->Kp = Kp; 
   this->Ki = Ki;
   this->Kd = Kd;
 
