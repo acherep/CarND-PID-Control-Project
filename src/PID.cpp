@@ -64,9 +64,9 @@ void PID::UpdateError(double cte) {
   }
 
   time_step++;
-  cout << "Time_step: " << time_step << endl;
+  // cout << "Time_step: " << time_step << endl;
 
-  if (time_step == 250) {
+  if (time_step == 500) {
     if (is_first_run) {
       best_error = total_error;
       is_first_run = false;
@@ -94,7 +94,8 @@ void PID::UpdateError(double cte) {
 	    direction = 1;
       }
     }
-    cout << "Kp: " << Kp << ", dp: " << dp << endl;
+    cout << "Kp: " << Kp << ", dp: " << dp << ", direction:" << direction << endl;
+    cout << "Total Error: " << total_error << endl;
     RestartSimulator();
   }
 }
