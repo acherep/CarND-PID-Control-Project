@@ -75,8 +75,8 @@ void PID::UpdateError(double cte) {
     } else {
       if (direction == 1) {
         if (total_error < best_error) {
-          // dp *= 1.1;
           best_error = total_error;
+          dp *= 1.1;
           Kp += dp;
         } else {
           Kp -= 2 * dp;
@@ -84,49 +84,17 @@ void PID::UpdateError(double cte) {
         }
       } else {
         if (total_error < best_error) {
-          // dp *= 1.1;
           best_error = total_error;
-          Kp -= dp;
-          direction = 1;
+          dp *= 1.1;
+          Kp += dp;
         } else {
+	      Kp += 2 * dp;
+          dp *= 0.9;
         }
+	    direction = 1;
       }
-      // if (total_error >= best_error) {
-      //   if (direction == 1) {
-      //     Kp -= 2 * dp;
-      //     direction = -1;
-      //   } else {
-      //     if (total_error >= best_error) {
-      //       Kp += dp;
-      //       dp *= 0.9;
-      //     } else {
-      //       best_error = total_error;
-      //     }
-      //   }
-      // } else {
-      //   best_error = total_error;
-      //   dp *= 1.1;
-      //   Kp += dp;
-      // }
     }
-    // if (total_error < best_error) {
-    //   best_error = total_error;
-    //   dp *= 1.1;
-    //   Kp += dp;
-    // } else {
-    //   if (!is_dp_decreased) {
-    //     Kp -= dp;
-    //     is_dp_decreased = true;
-    //   } else {
-    //     Kp += dp;
-    //     dp *= 0.9;
-    //     Kp += dp;
-    //     is_dp_decreased = false;
-    //   }
-    // }
     cout << "Kp: " << Kp << ", dp: " << dp << endl;
-    // update weights
-    // Kp += dp;
     RestartSimulator();
   }
 }
