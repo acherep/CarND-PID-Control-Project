@@ -56,7 +56,14 @@ int main() {
           //              std::stod(j[1]["steering_angle"].get<std::string>());
           //              double steer_value = -0.05;
           double steer_value = pid.getSteering(cte);
-          double throttle = 0.3;
+          // throttle is variable from 0.2 to 0.4. It depends on the cte. 
+          // The higher cte leads throttle to be closer to 0.2. 
+          // The low cte allows the car to drive faster by increasing the throttle up to 0.4
+          double correction = 0.;
+          if (std::fabs(cte)<2) {
+            correction = 1 - std::fabs(cte) * 0.5;
+          }
+          double throttle = 0.2 + 0.2 * correction;
           pid.UpdateError(cte);
           std::cout << "Total error: " << pid.GetTotalError() << std::endl;
           /*
