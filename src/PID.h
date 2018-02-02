@@ -4,16 +4,7 @@
 #include <uWS/uWS.h>
 
 class PID {
- public:
-  /*
-   * Errors
-   */
-  double p_error;
-  double i_error;
-  double d_error;
-
-  double dp;
-
+ private:
   uWS::WebSocket<uWS::SERVER> ws;
 
   /*
@@ -22,17 +13,30 @@ class PID {
   double Kp;
   double Ki;
   double Kd;
+
+  /*
+   * Errors
+   */
   double cte;
   double sum_cte;
-  int time_step;
-  double previous_error;
+  double sum_cte_cte;
   double total_error;
   double best_error;
 
-  bool is_first_run;
-  bool is_dp_decreased;
-  int direction;
+  int time_step;
 
+  bool is_first_run;
+
+  int twiddle_direction;
+  // twiddle increment
+  double dp;
+
+  void Reset();
+
+  // Twiddle desired parameter
+  void Twiddle();
+
+ public:
   /*
    * Constructor
    */
@@ -48,28 +52,26 @@ class PID {
    */
   void Init(double Kp, double Ki, double Kd, double cte);
 
+  /*
+   * Initialize Simulator
+   */
   void InitWS(uWS::WebSocket<uWS::SERVER> ws);
 
   /*
-   * Calculates Steering.
+   * Calculate Steering
    */
   double getSteering(double cte);
-
-  void UpdateCoefficient();
 
   /*
    * Update the PID error variables given cross track error.
    */
   void UpdateError(double cte);
 
+  /*
+   * Return the total PID error.
+   */
   double GetTotalError();
 
-  /*
-   * Calculate the total PID error.
-   */
-  double TotalError();
-
-  void Reset();
   /*
    * Restart the simulator
    */
