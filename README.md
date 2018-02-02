@@ -10,6 +10,8 @@ The throttle variable is set from 0.1 to 0.35 depending on the current *cte*. Th
 
 The initial values were manually calibrated. To finetune the parameters, the twiddle was applied (see method *PID::Twiddle*). This procedure leaded to the following set of parameters (tau\_p = Kp = 0.09178, tau\_i = Ki = 0.00001, tau\_d = Kd = 0.52498).
 
+Paramenter tau\_p forces the car to converge to the road center, whereas tau\_d removes the oscilation component from this convergence. Parameter tau\_i eliminates the systematic bias from the measurement (which is small in our case).
+
 ---
 
 ## Dependencies
