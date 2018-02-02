@@ -9,6 +9,7 @@ The throttle variable is set from 0.1 to 0.35 depending on the current *cte*. Th
 ## Choosing parameters of the PID Controller
 
 The initial values were manually calibrated. To finetune the parameters, the twiddle was applied (see method *PID::Twiddle*). This procedure leaded to the following set of parameters (tau\_p = Kp = 0.09178, tau\_i = Ki = 0.00001, tau\_d = Kd = 0.52498).
+
 ---
 
 ## Dependencies
