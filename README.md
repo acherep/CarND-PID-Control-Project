@@ -1,10 +1,14 @@
-# CarND-Controls-PID
+# PID Controls
 Self-Driving Car Engineer Nanodegree Program
 
+<img src="./project_video_output.gif" width="400">
+
+[Link to the video result](./project_video_output.mp4)
 
 ## Choosing throttling
+The *PID* control includes for proportional, integral, differential terms.
 
-The throttle variable is set from 0.1 to 0.35 depending on the current *cte*. The higher *cte* leads throttle to be closer to 0.1. The low *cte* allows the car to drive faster by increasing the throttle up to 0.35
+The throttle variable is set from 0.1 to 0.35 depending on the current *cte* (cross track error). The higher *cte* leads throttle to be closer to 0.1. The low *cte* allows the car to drive faster by increasing the throttle up to 0.35
 
 ## Choosing parameters of the PID Controller
 
@@ -46,11 +50,4 @@ There's an experimental patch for windows in this [PR](https://github.com/udacit
 3. Compile: `cmake .. && make`
 4. Run it: `./pid`. 
 
-Tips for setting up your environment can be found [here](https://classroom.udacity.com/nanodegrees/nd013/parts/40f38239-66b6-46ec-ae68-03afd8a601c8/modules/0949fca6-b379-42af-a919-ee50aa304e6a/lessons/f758c44c-5e40-4e01-93b5-1a82aa4e044f/concepts/23d376c7-0195-4276-bdf0-e02f1f3c665d)
-
-
-## Project Instructions and Rubric
-
-More information is only accessible by people who are already enrolled in Term 2
-of CarND. If you are enrolled, see [the project page](https://classroom.udacity.com/nanodegrees/nd013/parts/40f38239-66b6-46ec-ae68-03afd8a601c8/modules/f1820894-8322-4bb3-81aa-b26b3c6dcbaf/lessons/e8235395-22dd-4b87-88e0-d108c5e5bbf4/concepts/6a4d8d42-6a04-4aa6-b284-1697c0fd6562)
-for instructions and the project rubric.
+Tips for setting up your environment can be found [here](https://classroom.udacity.com/nanodegrees/nd013/parts/40f38239-66b6-46ec-ae68-03afd8a601c8/modules/0949fca6-b379-42af-a919-ee50aa304e6a/lessons/f758c44c-5e40-4e01-93b5-1a82aa4e044f/concepts/23d376c7-0195-4276-bdf0-e02f1f3c665d).
